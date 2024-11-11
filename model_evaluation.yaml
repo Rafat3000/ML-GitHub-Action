@@ -1,0 +1,36 @@
+name: Model Evaluation  # اسم التدفق ليظهر كـ"Model Evaluation" في واجهة GitHub Actions
+
+# triggers : events 
+on:
+    pull_request:                   # يتم تشغيل التدفق عند إنشاء أو تحديث طلب دمج (Pull Request)
+        branches:
+            - main                  # يُشغَّل فقط عندما يكون طلب الدمج موجَّهًا للفرع الرئيسي "main"
+
+# code 
+jobs:
+    model-evaluation:               # اسم المهمة هنا هو "model-evaluation"
+        runs-on: ubuntu-latest      # تشغيل المهمة على نظام تشغيل "Ubuntu" الأحدث (لينكس)
+
+        # steps 
+        steps:
+            - name: Checkout code   # الخطوة 1: تحميل الكود
+              uses: actions/checkout@v4  # استخدام GitHub Action لتحميل ملفات المشروع في بيئة العمل
+
+            - name: Setup Python3.11        # الخطوة 2: إعداد Python بإصدار 3.11
+              uses: actions/setup-python@v4
+              with:
+                python-version: 3.11        # تحديد إصدار Python المطلوب (3.11)
+
+            - name: Setup requirements      # الخطوة 3: تثبيت المتطلبات
+              run: |
+                python -m pip install --upgrade pip  # ترقية pip لأحدث إصدار
+                pip install -r requirements.txt      # تثبيت الحزم المدرجة في ملف requirements.txt
+
+            - name: Run Model Evaluation      # الخطوة 4: تشغيل تقييم النموذج
+              run: python app.py              # تشغيل الكود في app.py الذي يحتوي على تعليمات تدريب وتقييم النموذج
+
+            - name: Show metrics              # الخطوة 5: تحميل نتائج التقييم
+              uses: actions/upload-artifact@v3
+              with:
+                name: Evaluation Results      # تعيين اسم الملف الذي سيظهر في GitHub
+                path: metrics.txt             # تحديد مسار ملف النتائج لتحميله كـ "artifact"
