@@ -17,8 +17,8 @@ x = data.data                # المتغيرات المستقلة
 y = data.target              # المتغير التابع (الهدف)
 
 # تعريف المتغيرات الأساسية
-random_state = 42            # لتحديد عشوائية ثابتة لأغراض التكرار
-test_size = 0.2              # حجم البيانات المخصصة للاختبار (20%)
+random_state = 20            # لتحديد عشوائية ثابتة لأغراض التكرار
+test_size = 0.15              # حجم البيانات المخصصة للاختبار (20%)
 
 # تقسيم البيانات
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_size, random_state=random_state)
