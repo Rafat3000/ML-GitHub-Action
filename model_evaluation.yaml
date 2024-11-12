@@ -5,7 +5,7 @@ on:
     pull_request:                   # يتم تشغيل التدفق عند إنشاء أو تحديث طلب دمج (Pull Request)
         branches:
             - main                  # يُشغَّل فقط عندما يكون طلب الدمج موجَّهًا للفرع الرئيسي "main"
-
+permissions: write-all
 # code 
 jobs:
     model-evaluation:               # اسم المهمة هنا هو "model-evaluation"
