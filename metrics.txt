@@ -10,3 +10,27 @@ Accuracy: 0.9474
 Model: Decision Tree
 Accuracy: 0.9474
 ----------------------------------------
+Model: Random Forest
+Accuracy: 0.9884
+----------------------------------------
+Model: Logistic Regression
+Accuracy: 0.9884
+----------------------------------------
+Model: K-Nearest Neighbors
+Accuracy: 0.9535
+----------------------------------------
+Model: Decision Tree
+Accuracy: 0.9651
+----------------------------------------
+Model: Random Forest
+Accuracy: 0.9884
+----------------------------------------
+Model: Logistic Regression
+Accuracy: 0.9884
+----------------------------------------
+Model: K-Nearest Neighbors
+Accuracy: 0.9535
+----------------------------------------
+Model: Decision Tree
+Accuracy: 0.9651
+----------------------------------------

@@ -15,6 +15,11 @@ jobs:
         steps:
             - name: Checkout code   # الخطوة 1: تحميل الكود
               uses: actions/checkout@v4  # استخدام GitHub Action لتحميل ملفات المشروع في بيئة العمل
+            
+            - name: Setup CML
+              uses: iterative/setup-cml@v1
+
+
 
             - name: Setup Python3.11        # الخطوة 2: إعداد Python بإصدار 3.11
               uses: actions/setup-python@v4
@@ -29,8 +34,13 @@ jobs:
             - name: Run Model Evaluation      # الخطوة 4: تشغيل تقييم النموذج
               run: python app.py              # تشغيل الكود في app.py الذي يحتوي على تعليمات تدريب وتقييم النموذج
 
-            - name: Show metrics              # الخطوة 5: تحميل نتائج التقييم
-              uses: actions/upload-artifact@v3
-              with:
-                name: Evaluation Results      # تعيين اسم الملف الذي سيظهر في GitHub
-                path: metrics.txt             # تحديد مسار ملف النتائج لتحميله كـ "artifact"
+            - name: Write CML report
+              env:
+                REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                # Post reports as comments in GitHub PRs
+                cat metrics.txt >> report.md
+                cml comment create report.md
+
+
+          
