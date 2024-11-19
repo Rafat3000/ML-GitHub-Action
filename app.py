@@ -28,7 +28,7 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_size, r
 #define models dictionary
 models = {
     "Random Forest": RandomForestClassifier(n_estimators=100, random_state=random_state),
-    "Logistic Regression": LogisticRegression(max_iter=1000, random_state=random_state),
+    "Logistic Regression": LogisticRegression(random_state=random_state),
     "K-Nearest Neighbors": KNeighborsClassifier(),
     "Decision Tree": DecisionTreeClassifier(random_state=random_state)
 }
